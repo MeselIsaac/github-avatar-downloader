@@ -14,13 +14,15 @@ function getRepoContributors(repoOwner, repoName, cb) {
       'Authorization':  'Token ' + secrets.GITHUB_TOKEN
 
     }
+
+
   };
 
+  request(options, function(err, res, body) {
+      var data = JSON.parse(body);
 
-  request(options, function(err, res, body){
-    cb(err, body);
+    cb(err, data);
   });
-
 }
 
 getRepoContributors("jquery", "jquery", function(err, result) {
